@@ -1,0 +1,42 @@
+# Everything-for-AI 定时发送任务
+# 每天自动发送各种内容到飞书
+
+# ========== 每日任务 ==========
+
+# 07:30 - 名言 + 天气（基础信息）
+30 7 * * * cd /root/.openclaw/workspace/everything-for-ai && python3 daily_sender.py >> /var/log/daily_sender.log 2>&1
+
+# 09:00 - 新闻
+0 9 * * * cd /root/.openclaw/workspace/everything-for-ai && python3 daily_sender.py --type news >> /var/log/news_sender.log 2>&1
+
+# 12:00 - 笑话
+0 12 * * * cd /root/.openclaw/workspace/everything-for-ai && python3 daily_sender.py --type jokes >> /var/log/jokes_sender.log 2>&1
+
+# 14:00 - 股市提醒
+0 14 * * * cd /root/.openclaw/workspace/everything-for-ai/stock-reminder && python3 daily_stock_sender.py >> /var/log/stock_reminder.log 2>&1
+
+# 18:00 - 日报
+0 18 * * * cd /root/.openclaw/workspace/everything-for-ai && python3 daily_sender.py --type daily >> /var/log/daily_report.log 2>&1
+
+# ========== 每周任务 ==========
+
+# 周一 09:00 - 周报
+0 9 * * 1 cd /root/.openclaw/workspace/everything-for-ai && python3 daily_sender.py --type weekly >> /var/log/weekly_summary.log 2>&1
+
+# ========== 金融信息（定时）==========
+
+# 08:00 - 加密货币
+0 8 * * * cd /root/.openclaw/workspace/everything-for-ai/crypto-tracker && python3 crypto_bot.py >> /var/log/crypto.log 2>&1
+
+# 08:30 - 汇率
+30 8 * * * cd /root/.openclaw/workspace/everything-for-ai/exchange-rate-monitor && python3 exchange_bot.py >> /var/log/exchange.log 2>&1
+
+# ========== 服务器监控 ==========
+
+# 每小时 - 服务器状态
+0 * * * * cd /root/.openclaw/workspace/everything-for-ai/server-monitor && python3 monitor.py >> /var/log/server_monitor.log 2>&1
+
+# ========== 综合发送 ==========
+
+# 每天早上 8:00 - 综合信息（名言+天气+金融+新闻）
+0 8 * * * cd /root/.openclaw/workspace/everything-for-ai && python3 all_sender.py >> /var/log/all_sender.log 2>&1

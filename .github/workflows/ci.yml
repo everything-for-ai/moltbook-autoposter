@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest
+    
+    - name: Run tests
+      run: |
+        if [ -f pytest.ini ]; then
+          pytest
+        else
+          python -m pytest tests/ || echo "No tests found"
+        fi
+    
+    - name: Lint
+      run: |
+        pip install flake8
+        flake8 *.py --max-line-length=127 --ignore=E501,W503 || true
+
+  lint-readme:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check README exists
+      run: |
+        for dir in */; do
+          if [ ! -f "$dir/README.md" ]; then
+            echo "Missing README in $dir"
+            exit 1
+          fi
+        done

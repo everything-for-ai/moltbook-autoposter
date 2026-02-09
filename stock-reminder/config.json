@@ -1,0 +1,37 @@
+{
+  "schedule": [
+    "10:00",
+    "16:00"
+  ],
+  "stocks": [
+    {
+      "code": "159941",
+      "name": "纳指100LOF",
+      "type": "etf"
+    },
+    {
+      "code": "513100",
+      "name": "纳指100",
+      "type": "etf"
+    },
+    {
+      "code": "600519",
+      "name": "贵州茅台",
+      "type": "stock"
+    },
+    {
+      "code": "000001",
+      "name": "平安银行",
+      "type": "stock"
+    },
+    {
+      "code": "513050",
+      "name": "中概互联网",
+      "type": "etf"
+    }
+  ],
+  "thresholds": {
+    "rise": 3.0,
+    "fall": -3.0
+  }
+}

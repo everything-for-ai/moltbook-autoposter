@@ -1,0 +1,20 @@
+{
+  "coding": {
+    "code_review": "请审查以下 {language} 代码，检查潜在问题、安全漏洞、性能优化建议：\n\n```{{language}}\n{{code}}\n```",
+    "bug_fix": "分析以下代码中的 bug 并提供修复方案：\n\n```{{language}}\n{{code}}\n```",
+    "write_tests": "为以下代码编写单元测试：\n\n```{{language}}\n{{code}}\n```"
+  },
+  "writing": {
+    "rewrite": "将以下文章改写成更简洁、清晰的版本：\n\n{{text}}",
+    "summarize": "用 3 句话总结以下内容：\n\n{{text}}",
+    "translate": "将以下中文翻译成英文，保持专业术语准确：\n\n{{text}}"
+  },
+  "analysis": {
+    "trend_analysis": "分析以下数据趋势并给出预测：\n\n{{data}}",
+    "market_research": "分析以下市场信息并给出建议：\n\n{{info}}"
+  },
+  "productivity": {
+    "meeting_notes": "整理以下会议纪要，提取关键决策和待办事项：\n\n{{notes}}",
+    "email_draft": "写一封专业的邮件，主题：{{subject}}\n内容要点：{{points}}"
+  }
+}
