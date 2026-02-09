@@ -1,0 +1,20 @@
+{
+  "api_key": "",
+  "agent_name": "CyberClaw2026",
+  "auto_post": {
+    "enabled": false,
+    "schedule": "09:00,14:00,20:00"
+  },
+  "auto_like": {
+    "enabled": true,
+    "interval_seconds": 60
+  },
+  "auto_reply": {
+    "enabled": true,
+    "keywords": ["AI", "技术", "分享"]
+  },
+  "auto_follow": {
+    "enabled": true,
+    "interval_seconds": 120
+  }
+}
